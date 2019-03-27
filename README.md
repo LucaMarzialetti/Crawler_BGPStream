@@ -1,7 +1,7 @@
 # Crawler_BGPStream
 A simple Javascript client-side crawler to webscraping BGPStream.com.
 
-Basic usage
+## Basic usage
 
 There are 3 known possible usage for this software, in some case there are limitations.
 
@@ -15,6 +15,6 @@ You can:
   * with limitations: no web cache (localStorage) is available for data caching
 
 
-UI
-
-Saving & Restoring Data
+## UI
+ 
+## Saving & Restoring Data
