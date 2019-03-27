@@ -16,9 +16,11 @@ You can:
 
 ## Use and Motivation
 
-The tool "translates" the events shown on the BGPStream.com webpage producing a table of cases which also contains the URL for the visualization of the event using the RIPE analysis tool  * UpstreamVisibility *. https://stat.ripe.net/widget/upstream-visibility
+The tool "translates" the events shown on the BGPStream.com webpage producing a table of cases which also contains the URL for the visualization of the event using the RIPE analysis tool  *UpstreamVisibility*.
 
-For short, it will be produce a valid UpstreamVisibility URL, already configured with valid * starttime * * endtime * and * resource * fields, taken from the BGPStream.com event.
+Check https://stat.ripe.net/widget/upstream-visibility
+
+For short, it will be produce a valid UpstreamVisibility URL, already configured with valid *starttime* *endtime* and *resource* fields, taken from the BGPStream.com event.
 
 ## UI Workflow & Usage
 
