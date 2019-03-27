@@ -1,4 +1,4 @@
-# Crawler_BGPStrem
+# Crawler_BGPStream
 A simple Javascript client-side crawler to webscraping BGPStream.com.
 
 Basic usage
