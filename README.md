@@ -1,7 +1,7 @@
 # Crawler_BGPStream
 A simple Javascript client-side crawler to webscraping BGPStream.com.
 
-## Basic usage
+## Basic setup
 
 There are 3 known possible usage for this software, in some case there are limitations.
 
@@ -15,6 +15,42 @@ You can:
   * with limitations: no web cache (localStorage) is available for data caching
 
 
-## UI
+## UI Workflow & Usage
+
+The application allow the following functionalities, following the given workflow
+### 1. Cache Managment
+
+##### 1.1 Restore 
+Optionally the user can restore previous data session by clicking on "Load Cache" button. If the cache is empty no changes occurs. 
  
+##### 1.2 Clear 
+Alternatively if the users want to start a brand new session, use the "Clear Local Cache" button to flush the cache. (See Saving & Restore Data for furhter informations).
+ 
+### 2. Data Fetching
+
+At least one time per session, new data must be fetched from the BGPStream.com page.
+ The user then must click on the "Fetch from BGPStrem.com" button and wait for data fetching.
+ Then the application load the list of events shown on the mainpage, if the cache was previously loaded, already cached events are dropped.
+
+### 3 Update
+
+After fetching new data, the user can update the current cache by pressing "Update from BGPStream.com".
+ The crawler will start checking, event by event, applying the following procedure
+  
+* the "detail" page of the event is collected
+* if the page contains at least the minimum requirements of information needed, it will be processed, otherwise the event is discarded.
+* the minimum requirements needed are
+  * The "leaked IP prefix" or the AS number of involved AS in the issue.
+  * The start time of the event. 
+* Optionally, if no end time field is found, the end time is set equals to the start time.
+* The start time will be decremented of -1 Day.
+* The end time will be incremented of +1 Day.
+* If an ASN is found insted of an IP prefix, then the ASN will be resolved as the greatest subnet which the ASN holds.
+
+Once processed the event is then added in the cache and also pushed in the events table.
+
+NOTES:
++ if the crawling step fails due to connectivity problems the crawler will retry 3 times before givin up to the next event.
++ if the page doens't contains usefull information the event will be added to a skip list to avoid crawling in the following sessions, if cache is not cleared.
+
 ## Saving & Restoring Data
