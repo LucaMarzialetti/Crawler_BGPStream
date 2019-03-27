@@ -7,12 +7,12 @@ There are 3 known possible usage for this software, in some case there are limit
 
 You can:
 * Use nodejs server for hosting the page application
-  * Eg: node server.js 
+  * Eg: **node** server.js 
   * Best choice
 * Use nodejs http-server, or any other, for hosting http page
-  * Eg: http-server index.html
+  * Eg: **http-server** index.html
 * Open the page in the browser as a local file 
-  * with limitations: no web cache (localStorage) is available for data caching
+  * With limitations: no web cache (localStorage) is available for data caching
 
 ## Uses and Motivations
 
@@ -44,10 +44,10 @@ At least one time per session, new data must be fetched from the BGPStream.com p
 After fetching new data, the user can update the current cache by pressing "*Update from BGPStream.com*".
  The crawler will start checking, event by event, applying the following procedure
   
-* the *detail*" page of the event is collected
+* the "*detail*" page of the event is collected
 * if the page contains at least the minimum requirements of information needed, it will be processed, otherwise the event is discarded.
 * the minimum requirements needed are
-  * The "leaked IP prefix" or the AS number of involved AS in the issue.
+  * The "*leaked IP prefix*" or the AS number of involved AS in the issue.
   * The start time of the event. 
 * Optionally, if no end time field is found, the end time is set equals to the start time.
 * The start time will be decremented of -1 Day.
