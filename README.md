@@ -47,10 +47,27 @@ After fetching new data, the user can update the current cache by pressing "Upda
 * The end time will be incremented of +1 Day.
 * If an ASN is found insted of an IP prefix, then the ASN will be resolved as the greatest subnet which the ASN holds.
 
-Once processed the event is then added in the cache and also pushed in the events table.
+Once the event is processed it will be added to the cache and also pushed in the events table.
+The process continues until all events are processed or until the button "Update from BGPStream.com" is pressed again.
+
+The user can choice to pause and continue the process at will just by pressing the update button.
 
 NOTES:
 + if the crawling step fails due to connectivity problems the crawler will retry 3 times before givin up to the next event.
 + if the page doens't contains usefull information the event will be added to a skip list to avoid crawling in the following sessions, if cache is not cleared.
 
 ## Saving & Restoring Data
+
+All the data needed for the caching are stored under this two objects with the following structure:
+
+localStorage['skiplist']
+* a list of the eventid to be skipped
+* eg: [1923,11292,141,...]
+
+localStorage['stored_collection']
+* an object indexed by eventid key, each containing an object with the following fiels
+ * type: the event type such as (Outage, Leak, Hijack)
+ * starttime: the start time
+ * endtime: the end time
+ * bgpstreamlink: the original BGPStream.com URL
+ * target: the given  IP prefix
