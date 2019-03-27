@@ -1,5 +1,5 @@
 # Crawler_BGPStream
-A simple Javascript client-side crawler to webscraping BGPStream.com.
+A simple Javascript client-side crawler to webscraping BGPStream.com with some extra functionalities.
 
 ## Basic setup
 
@@ -14,6 +14,11 @@ You can:
 * Open the page in the browser as a local file 
   * with limitations: no web cache (localStorage) is available for data caching
 
+## Use and Motivation
+
+The tool "translates" the events shown on the BGPStream.com webpage producing a table of cases which also contains the URL for the visualization of the event using the RIPE analysis tool  * UpstreamVisibility *. https://stat.ripe.net/widget/upstream-visibility
+
+For short, it will be produce a valid UpstreamVisibility URL, already configured with valid * starttime * * endtime * and * resource * fields, taken from the BGPStream.com event.
 
 ## UI Workflow & Usage
 
@@ -58,7 +63,7 @@ NOTES:
 
 ## Saving & Restoring Data
 
-All the data needed for the caching are stored under this two objects with the following structure:
+All the data needed for the session are stored under two objects of localStorage with the following structure:
 
 localStorage['skiplist']
 * a list of the eventid to be skipped
@@ -71,3 +76,7 @@ localStorage['stored_collection']
  * endtime: the end time
  * bgpstreamlink: the original BGPStream.com URL
  * target: the given  IP prefix
+ 
+The user can save those two variables and then use the * restore_cache.js * to manually restore the data.
+Edit the first two variables of the js script to set the cached data.
+Then just copy and paste in the browser js console the code.
